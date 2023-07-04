@@ -27,6 +27,7 @@
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"],
       "@config/*": ["config/*"],
+      "@pages/*": ["pages/*"],
     }
    
   },
