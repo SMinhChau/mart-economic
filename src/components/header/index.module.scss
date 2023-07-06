@@ -1,4 +1,29 @@
-.content{
-background-color: rgb(10, 34, 76);
-    color: aquamarine;
+@use "@/main";
+
+.content {
+    height: main.$heightHeader;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .select {
+        border-right: 1px solid;
+        border-color: main.$borderColor;
+    }
+}
+
+.Box {
+    width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+    .Box {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 48em) {
+    .Box {
+        width: 25%;
+    }
 }
