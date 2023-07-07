@@ -13,7 +13,6 @@ const brandPrimary = definePartsStyle({
         borderRadius: "full",
         fontFamily: `"Quicksand", sans-serif`,
     },
-
     icon: {
         color: "#7E7E7E",
     },

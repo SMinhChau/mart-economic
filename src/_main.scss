@@ -1,9 +1,16 @@
-@import "@fontsource/quicksand";
+@import "@fontsource/quicksand/300.css";
+@import "@fontsource/quicksand/400.css";
+@import "@fontsource/quicksand/500.css";
+@import "@fontsource/quicksand/600.css";
+@import "@fontsource/quicksand/700.css";
 
 $width: 100vw;
 $height: 100vh;
 $heightHeader: 6rem;
+$heightNavHeader: 4rem;
 $borderColor: #e5e5e5;
+$colorButtonGreen: #3bb77e;
+$textGreen: #3bb77e;
 
 :root {
     font-family: "Quicksand", sans-serif;
@@ -40,7 +47,8 @@ a:hover {
 body {
     margin: 0;
     display: flex;
-    place-items: center;
+
+    place-items: start;
     min-width: 320px;
     min-height: 100vh;
     font-family: "Quicksand", sans-serif;

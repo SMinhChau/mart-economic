@@ -4,6 +4,7 @@ import {
     Center,
     Flex,
     Icon,
+    SystemStyleObject,
     Text,
     useColorModeValue,
 } from "@chakra-ui/react";
@@ -17,6 +18,11 @@ interface Props {
     frontSize?: string;
     colorText?: string;
     actionFunction?: React.FormEventHandler<HTMLButtonElement>;
+    iconRight?: IconType;
+    titleBold?: String;
+    _hover?: SystemStyleObject;
+    _hoverIconLeft?: SystemStyleObject;
+    _hoverIconRight?: SystemStyleObject;
 }
 
 const TagIcon: React.FC<Props> = ({
@@ -25,29 +31,55 @@ const TagIcon: React.FC<Props> = ({
     frontSize,
     colorText,
     colorIcon,
+    titleBold,
     actionFunction,
+    iconRight,
+    _hover,
+    _hoverIconLeft,
+    _hoverIconRight,
 }) => {
     const colorTheme = useColorModeValue("#253D4E", "white");
 
     return (
-        <Button variant="ghost" colorScheme="brand" onClick={actionFunction}>
+        <Button
+            variant="ghost"
+            colorScheme="brand"
+            onClick={actionFunction}
+            textColor={colorText}
+            _hover={_hover}
+        >
             <Flex>
-                <Center>
-                    <Icon
-                        viewBox="0 0 200 200"
-                        as={icon}
-                        color={colorIcon ? colorIcon : colorTheme}
-                        size={24}
-                    />
-                </Center>
+                {icon && (
+                    <Center>
+                        <Icon
+                            viewBox="0 0 200 200"
+                            as={icon}
+                            color={colorIcon ? colorIcon : colorTheme}
+                            fontSize={24}
+                            _hover={_hover}
+                        />
+                    </Center>
+                )}
+
                 <Center pl={2}>
                     <Text
                         fontSize={frontSize ? frontSize : "1rem"}
-                        color={colorText ? colorText : "#7E7E7E"}
+                        fontWeight={titleBold ? "700" : "normal"}
                     >
                         {title}
                     </Text>
                 </Center>
+                {iconRight && (
+                    <Center>
+                        <Icon
+                            pl={1}
+                            as={iconRight}
+                            color={colorIcon ? colorIcon : colorTheme}
+                            fontSize={24}
+                            _hover={_hover}
+                        />
+                    </Center>
+                )}
             </Flex>
         </Button>
     );

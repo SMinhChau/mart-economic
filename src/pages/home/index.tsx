@@ -1,17 +1,18 @@
-import { useColorModeValue } from "@chakra-ui/react";
+import {useColorModeValue} from "@chakra-ui/react";
 import styles from "@pages/home/index.module.scss";
-import HeaderContent from "@components/header";
+import HeaderContent from "@components/header/headerTop/index";
 
-import Warpper from "@pages/warpper";
+import HeaderMain from "@components/header/headerMain/inded";
+import PopoperModal from "@components/popoper/PopoperModal";
 
 const Home = () => {
-  const colorRed = useColorModeValue("red", "yellow.800");
+    return (
+        <div className={styles.content}>
+            <HeaderContent />
 
-  return (
-    <div className={styles.content}>
-      <HeaderContent />
-    </div>
-  );
+            <HeaderMain />
+        </div>
+    );
 };
 
 export default Home;

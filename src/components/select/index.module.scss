@@ -1,0 +1,9 @@
+@use "@/main";
+
+.content {
+    background-color: main.$colorButtonGreen;
+
+    .textStyle {
+        color: white;
+    }
+}
