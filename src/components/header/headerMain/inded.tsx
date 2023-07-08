@@ -6,11 +6,14 @@ import {
     Center,
     Container,
     Flex,
+    Grid,
+    GridItem,
     Icon,
     SimpleGrid,
     Spacer,
     Text,
     Tooltip,
+    Wrap,
     useColorModeValue,
     useMediaQuery,
 } from "@chakra-ui/react";
@@ -86,35 +89,40 @@ const HeaderMain = () => {
     const NavBar = useMemo(() => {
         return (
             <>
-                <Flex align={"center"} ml={3}>
-                    {MENU_NAV.map((item, index) => {
-                        let mrItem;
-                        if (index === 0) {
-                            mrItem = item.mr;
-                        }
-                        return (
-                            <Tooltip label={item.toltip} fontSize="md">
-                                <Center key={index} mr={mrItem} ml={1}>
-                                    <TagIcon
-                                        key={index}
-                                        colorText={item.colorText}
-                                        colorIcon={item.colorIcon}
-                                        icon={item.iconLeft}
-                                        title={item.title}
-                                        titleBold={"700"}
-                                        iconRight={item.iconRight}
-                                        _hover={{
-                                            color: "#3bb77e",
-                                        }}
-                                        actionFunction={() =>
-                                            console.log("onClick@")
-                                        }
-                                    />
-                                </Center>
-                            </Tooltip>
-                        );
-                    })}
-                </Flex>
+                {isLargerThan1280 ? (
+                    <>
+                        {" "}
+                        {MENU_NAV.map((item, index) => {
+                            let mrItem;
+                            if (index === 0) {
+                                mrItem = item.mr;
+                            }
+                            return (
+                                <Tooltip label={item.toltip} fontSize="md">
+                                    <Center key={index} mr={mrItem} ml={1}>
+                                        <TagIcon
+                                            key={index}
+                                            colorText={item.colorText}
+                                            colorIcon={item.colorIcon}
+                                            icon={item.iconLeft}
+                                            title={item.title}
+                                            titleBold={"700"}
+                                            iconRight={item.iconRight}
+                                            _hover={{
+                                                color: "#3bb77e",
+                                            }}
+                                            actionFunction={() =>
+                                                console.log("onClick@")
+                                            }
+                                        />
+                                    </Center>
+                                </Tooltip>
+                            );
+                        })}
+                    </>
+                ) : (
+                    <></>
+                )}
             </>
         );
     }, [MENU_NAV]);
@@ -123,119 +131,135 @@ const HeaderMain = () => {
         <>
             <WrapperBorder borderNon>
                 <Box
+                    display={"flex"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
                     mx={{
-                        base: "0.5 rem",
+                        base: "0.5rem",
                         sm: "1rem",
                         md: "6rem",
                         lg: "9rem",
                         xl: "10rem",
                     }}
+                    p={"0.5rem"}
                     className={styles.content}
                 >
-                    <Flex
-                        flex={1}
-                        justifyContent={"space-between"}
-                        alignItems={"center"}
-                    >
-                        <Box>
-                            <Flex>
-                                <PopoperModal contentMenuHeader>
-                                    <Box
-                                        display="flex"
-                                        alignItems="center"
-                                        flexDirection={"row"}
-                                        justifyContent="center"
-                                        width="100%"
-                                    >
-                                        <Button
-                                            position={"relative"}
-                                            h={"3rem"}
-                                            variant="unstyled"
-                                            color="white"
-                                            fontWeight={"700"}
-                                            backgroundColor={"#3bb77e"}
-                                            w={{lg: "250px"}}
-                                        >
-                                            <Center>
-                                                <Icon
-                                                    as={AiOutlineAppstore}
-                                                    fontSize={24}
-                                                    position={"relative"}
-                                                />
-                                                <Text
-                                                    px={1}
-                                                    className={
-                                                        styles.textSelectButton
-                                                    }
-                                                >
-                                                    Browse All Categories
-                                                </Text>
-                                                <Icon
-                                                    as={
-                                                        MdOutlineKeyboardArrowDown
-                                                    }
-                                                    fontSize={24}
-                                                    position={"relative"}
-                                                />
-                                            </Center>
-                                        </Button>
-                                    </Box>
-                                </PopoperModal>
-                                <Box
-                                    display={"flex"}
-                                    justifyContent={"center"}
-                                    alignItems={"center"}
+                    <Flex align={"center"}>
+                        <PopoperModal contentMenuHeader>
+                            <Box>
+                                <Button
+                                    position={"relative"}
+                                    h={"3rem"}
+                                    variant="unstyled"
+                                    color="white"
+                                    fontWeight={"700"}
+                                    backgroundColor={"#3bb77e"}
+                                    w={{lg: "250px"}}
                                 >
-                                    {NavBar}
-                                </Box>
-                            </Flex>
-                        </Box>
-
-                        <Box>
-                            <Flex align={"center"}>
-                                <Box px={2}>
-                                    <Center>
+                                    <Center px={1}>
                                         <Icon
-                                            alignItems={"center"}
-                                            as={TfiHeadphoneAlt}
+                                            as={AiOutlineAppstore}
+                                            fontSize={24}
+                                            position={"relative"}
+                                        />
+                                        <Text
+                                            px={1}
                                             fontSize={{
-                                                sm: "2rem",
-                                                lg: "2.25rem",
+                                                base: "0.75rem",
+                                                md: "1rem",
+                                                sm: "1rem",
+                                                lg: "1rem",
+                                                xl: "1rem",
                                             }}
+                                            className={styles.textSelectButton}
+                                        >
+                                            Browse All Categories
+                                        </Text>
+                                        <Icon
+                                            as={MdOutlineKeyboardArrowDown}
+                                            fontSize={24}
                                             position={"relative"}
                                         />
                                     </Center>
-                                </Box>
-                                <Box flex={1}>
-                                    <Flex
-                                        flexDirection={"column"}
-                                        align={"center"}
-                                        justifyContent={"center"}
-                                    >
-                                        <Text
-                                            fontSize={{
-                                                sm: "1rem",
-                                                lg: "1.5rem",
-                                            }}
-                                            className={styles.textBoldGreen}
-                                        >
-                                            1900 - 8888
-                                        </Text>
-                                        <Text
-                                            color={subTextTColor}
-                                            fontSize={{
-                                                sm: "0.8rem",
-                                                lg: "0.9rem",
-                                            }}
-                                            className={styles.subText}
-                                        >
-                                            24/7 Support Center
-                                        </Text>
-                                    </Flex>
-                                </Box>
-                            </Flex>
-                        </Box>
+                                </Button>
+                            </Box>
+                        </PopoperModal>
+
+                        <Flex
+                            ml={{
+                                base: "10 rem",
+                                sm: "8rem",
+                                md: "6rem",
+                                lg: "5rem",
+                                xl: "2rem",
+                            }}
+                            as="nav"
+                            wrap="wrap"
+                            w="100%"
+                        >
+                            {NavBar}
+                        </Flex>
                     </Flex>
+                    <Box
+                        w={{
+                            base: "35%",
+                            sm: "30%",
+                            lg: "30%",
+                            xl: "30%",
+                            "2xl": "13%",
+                        }}
+                    >
+                        <Flex align={"center"} justifyContent={"end"}>
+                            <Box>
+                                <Center>
+                                    <Icon
+                                        pr={1}
+                                        alignItems={"center"}
+                                        as={TfiHeadphoneAlt}
+                                        fontSize={{
+                                            base: "1.9rem",
+                                            sm: "2rem",
+                                            lg: "2.1rem",
+                                            xl: "2.5rem",
+                                        }}
+                                        position={"relative"}
+                                    />
+                                </Center>
+                            </Box>
+                            <Box>
+                                <Flex
+                                    flexDirection={"column"}
+                                    align={"center"}
+                                    justifyContent={"center"}
+                                >
+                                    <Text
+                                        fontSize={{
+                                            base: "0.75rem",
+                                            md: "1rem",
+                                            sm: "1rem",
+                                            lg: "1.5rem",
+                                            xl: "1.5rem",
+                                        }}
+                                        className={styles.textBoldGreen}
+                                    >
+                                        1900 - 8888
+                                    </Text>
+                                    <Text
+                                        color={subTextTColor}
+                                        fontSize={{
+                                            base: "0.5rem",
+                                            md: "0.75rem",
+                                            sm: "0.8rem",
+                                            lg: "0.9rem",
+                                        }}
+                                        className={styles.subText}
+                                    >
+                                        24/7 Support Center
+                                    </Text>
+                                </Flex>
+                            </Box>
+                        </Flex>
+                    </Box>
                 </Box>
             </WrapperBorder>
         </>

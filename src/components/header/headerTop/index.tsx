@@ -82,6 +82,7 @@ const HeaderContent: React.FC<Props> = () => {
     const {toggleColorMode} = useColorMode();
 
     const [isLargerThan1280] = useMediaQuery("(min-width: 1280px)");
+    const [isShortless1440] = useMediaQuery("(max-width: 1440px)");
     const {isOpen, onOpen, onClose} = useDisclosure();
 
     const DrawerMenu = () => {
@@ -114,6 +115,12 @@ const HeaderContent: React.FC<Props> = () => {
                 {isLargerThan1280 ? (
                     <>
                         {menu.map((i, index) => {
+                            if (isShortless1440 && i.key === "C") {
+                                return <></>;
+                            }
+                            if (isShortless1440 && i.key === "W") {
+                                return <></>;
+                            }
                             return (
                                 <TagIcon
                                     key={index}
@@ -137,7 +144,7 @@ const HeaderContent: React.FC<Props> = () => {
                 )}
             </>
         );
-    }, [isLargerThan1280]);
+    }, [isLargerThan1280, isShortless1440]);
 
     return (
         <>

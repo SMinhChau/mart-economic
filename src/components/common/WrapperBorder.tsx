@@ -1,7 +1,7 @@
 import React, {ReactNode} from "react";
 import styles from "@components/common/WrapperBorder.module.scss";
 import Warpper from "@pages/warpper";
-import {Box} from "@chakra-ui/react";
+import {Box, ResponsiveValue, SystemStyleObject} from "@chakra-ui/react";
 
 interface Props {
     children: ReactNode;
